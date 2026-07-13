@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block titulo %} Cadastrro {% endblock %}
+
+{% block conteudo %} 
+    <h1>Preencha o formulário abaixo para realizar seu cadastro</h1>
+
+    <form action="{{url_for('cadastro')}}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" placeholder="insira seu nome">
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" id="email" placeholder="insira seu email">
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha" placeholder="crie uma senha">
+        <button type="submit">Cadastrar</button>
+    </form>
+{% endblock %}
