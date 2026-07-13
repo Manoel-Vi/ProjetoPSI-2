@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block conteudo %} 
+    <h1>Inicie a sessão para acessar a página</h1>
+
+    <a href="{{url_for(login)}}">Iniciar sessão</a>
+{% endblock %}
