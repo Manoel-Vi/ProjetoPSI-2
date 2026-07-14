@@ -9,3 +9,7 @@ def index():
 @app.route('/cadastro')
 def cadastro():
     return render_temlate('cadastro.html')
+
+@app.route('/login')
+def login():
+    return render_temlate('login.html')
