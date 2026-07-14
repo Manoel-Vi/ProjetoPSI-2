@@ -22,5 +22,11 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         senha = request.form.get('senha')
+        
+        return redirect(url_for('home.html'))
 
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
