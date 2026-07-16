@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import db
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///meubanco.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.criar_tabela()
 
 @app.route('/')
 def index():
