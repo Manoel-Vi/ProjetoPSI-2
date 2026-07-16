@@ -4,7 +4,7 @@ from db import database
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///meubanco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 database.init_app(app)
@@ -22,6 +22,10 @@ def cadastro():
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
+
+        novo_usuario = Usuario(nome=nome, email=email, senha=senha)
+        database.session.add(novo_usuario)
+        database.session.commit()
 
         return redirect(url_for('login'))
 
@@ -41,6 +45,6 @@ def login():
 def home():
     return render_template('home.html')
 
-@app.route('/logut')
+@app.route('/logout')
 def logout():
     return redirect(url_for('index'))
