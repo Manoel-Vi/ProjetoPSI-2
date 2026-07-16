@@ -24,6 +24,10 @@ def cadastro():
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
+        
+        if len(senha) < 6:
+            flash('A senha deve ter pelo menos 6 caracteres.')
+            return redirect(url_for('cadastro'))
 
         usuario_ja_existe = Usuario.query.filter_by(email=email).first()
         if usuario_ja_existe:

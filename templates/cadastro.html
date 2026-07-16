@@ -4,7 +4,15 @@
 
 {% block conteudo %} 
     <h1>Preencha o formulário abaixo para realizar seu cadastro</h1>
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <form action="{{url_for('cadastro')}}" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" placeholder="insira seu nome">

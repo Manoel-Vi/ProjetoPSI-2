@@ -4,7 +4,15 @@
 
 {% block conteudo %} 
     <h1>Preencha o formulário abaixo para realizar seu login</h1>
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <form action="{{url_for('login')}}" method="post">
         <label for="email">E-mail:</label>
         <input type="text" name="email" id="email" placeholder="insira seu email">
