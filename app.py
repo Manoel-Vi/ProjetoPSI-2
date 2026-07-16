@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, abort
+from flask import Flask, render_template, request, redirect, url_for, abort, flash
 from models import Usuario, Buraco
 from db import database
 
@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.secret_key = 'ROMERITO_CORREDOR'  
 
 database.init_app(app)
 
@@ -41,7 +43,14 @@ def login():
         email = request.form.get('email')
         senha = request.form.get('senha')
 
-        return redirect(url_for('home'))
+        usuario = Usuario.query.filter_by(email=email).first()
+
+        if usuario and usuario.senha == senha:
+            return redirect(url_for('home'))
+        
+        else:
+            flash('E-mail ou senha incorretos. Tente novamente!')
+            return redirect(url_for('login'))
 
     return render_template('login.html')
 
