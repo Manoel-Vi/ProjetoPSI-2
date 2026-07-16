@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, abort
 from models import Usuario, Buraco
 from db import database
 
@@ -22,6 +22,10 @@ def cadastro():
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
+
+        usuario_ja_existe = Usuario.query.filter_by(email=email).first()
+        if usuario_ja_existe:
+            abort(400)
 
         novo_usuario = Usuario(nome=nome, email=email, senha=senha)
         database.session.add(novo_usuario)
@@ -48,3 +52,7 @@ def home():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
+
+@app.errorhandler(400)
+def erro400(error):
+    return render_template('erros/erro400.html'), 400

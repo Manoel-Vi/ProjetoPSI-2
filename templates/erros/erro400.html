@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block titulo %} Erro 400 {% endblock %}
+
+{% block conteudo %} 
+    <h1>Erro 400: Requisição inválida</h1>
+
+    <a href="{{url_for('index')}}">Voltar</a>
+{% endblock %}
