@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-database = SQLAlchemy()
+from db import database
 
 class Buraco(database.Model):
     __tablename__ = "buracos"
