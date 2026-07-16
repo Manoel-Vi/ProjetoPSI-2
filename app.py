@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, flash
-from models import Usuario, Buraco
-from db import database
+from .models import Usuario, Buraco
+from .db import database
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/banco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = 'ROMERITO_CORREDOR'  
