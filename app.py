@@ -2,6 +2,7 @@ from flask import Flask, render_template, render_template_string, request, redir
 from .models import Usuario, Buraco
 from flask_login import current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
+from .db import database
 
 app = Flask(__name__)
 
@@ -10,7 +11,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = 'ROMERITO_CORREDOR'
 
-database = SQLAlchemy(app)
 database.init_app(app)
 
 
