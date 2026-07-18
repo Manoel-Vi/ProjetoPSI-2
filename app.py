@@ -1,6 +1,6 @@
 from flask import Flask, render_template, render_template_string, request, redirect, url_for, abort, flash
 from .models import Usuario, Buraco
-from flask_login import current_user, logout_user, login_user, LoginManager
+from flask_login import current_user, logout_user, login_user, LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from .db import database
@@ -74,10 +74,12 @@ def login():
     return render_template('login.html')
 
 @app.route('/home')
+@login_required
 def home():
     return render_template('home.html')
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for("index"))
@@ -87,6 +89,7 @@ def erro400(error):
     return render_template('erros/erro400.html'), 400
 
 @app.route("/cadastrar-buraco", methods=["GET","POST"])
+@login_required
 def cadastrar_buraco():
 
     if request.method == "POST":
@@ -111,11 +114,13 @@ def cadastrar_buraco():
     return render_template('cadastro_buraco.html')
 
 @app.route("/listar-buracos")
+@login_required
 def listar_buracos():
     buracos = Buraco.query.all()
     return render_template("listar_buracos.html", buracos=buracos)
 
 @app.route("/apagar-buraco/<int:id>")
+@login_required
 def apagar_buraco(id):
     buraco = Buraco.query.get_or_404(id)
     database.session.delete(buraco)
@@ -123,6 +128,7 @@ def apagar_buraco(id):
     return redirect(url_for("listar_buracos"))
 
 @app.route("/editar-buraco/<int:id>", methods=["GET", "POST"])
+@login_required
 def editar_buraco(id):
     buraco = Buraco.query.get_or_404(id)
     if request.method == "POST":
