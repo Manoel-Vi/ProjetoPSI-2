@@ -79,7 +79,8 @@ def home():
 
 @app.route('/logout')
 def logout():
-    return redirect(url_for('index'))
+    logout_user()
+    return redirect(url_for("index"))
 
 @app.errorhandler(400)
 def erro400(error):
