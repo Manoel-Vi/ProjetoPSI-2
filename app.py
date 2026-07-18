@@ -1,16 +1,18 @@
 from flask import Flask, render_template, render_template_string, request, redirect, url_for, abort, flash
 from .models import Usuario, Buraco
-from .db import database
-from flask_login import current_user
+from flask_login import current_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.secret_key = 'ROMERITO_CORREDOR'  
+app.secret_key = 'ROMERITO_CORREDOR'
 
+database = SQLAlchemy(app)
 database.init_app(app)
+
 
 with app.app_context():
     database.create_all()
