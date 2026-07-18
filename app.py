@@ -94,8 +94,42 @@ def cadastrar_buraco():
         cidade = request.form["cidade"]
         gravidade = request.form["gravidade"]
 
-        novo_buraco = Buraco(rua=rua, bairro=bairro, cidade=cidade, gravidade=gravidade, usuario_id=current_user.id)
+        novo_buraco = Buraco(
+            rua=rua,
+            bairro=bairro,
+            cidade=cidade,
+            gravidade=gravidade,
+            usuario_id=current_user.id
+        )
+
         database.session.add(novo_buraco)
         database.session.commit()
 
+        return redirect(url_for("listar_buracos"))
+
     return render_template('cadastro-buraco.html')
+
+@app.route("/listar-buracos")
+def listar_buracos():
+    buracos = Buraco.query.all()
+    return render_template("listar-buracos.html", buracos=buracos)
+
+@app.route("/apagar-buraco/<int:id>")
+def apagar_buraco(id):
+    buraco = Buraco.query.get_or_404(id)
+    database.session.delete(buraco)
+    database.session.commit()
+    return redirect(url_for("listar_buracos"))
+
+@app.route("/editar-buraco/<int:id>", methods=["GET", "POST"])
+def editar_buraco(id):
+    buraco = Buraco.query.get_or_404(id)
+    if request.method == "POST":
+        buraco.rua = request.form["rua"]
+        buraco.bairro = request.form["bairro"]
+        buraco.cidade = request.form["cidade"]
+        buraco.gravidade = request.form["gravidade"]
+        database.session.commit()
+
+        return redirect(url_for("listar_buracos"))
+    return render_template("editar-buraco.html", buraco=buraco)
