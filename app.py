@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, abort, flash
+from flask import Flask, render_template, render_template_string, request, redirect, url_for, abort, flash
 from .models import Usuario, Buraco
 from .db import database
+from flask_login import current_user
 
 app = Flask(__name__)
 
@@ -69,3 +70,18 @@ def logout():
 @app.errorhandler(400)
 def erro400(error):
     return render_template('erros/erro400.html'), 400
+
+@app.route("/cadastrar-buraco", methods=["GET","POST"])
+def cadastrar_buraco():
+
+    if request.method == "POST":
+        rua = request.form["rua"]
+        bairro = request.form["bairro"]
+        cidade = request.form["cidade"]
+        gravidade = request.form["gravidade"]
+
+        novo_buraco = Buraco(rua=rua, bairro=bairro, cidade=cidade, gravidade=gravidade, usuario_id=current_user.id)
+        database.session.add(novo_buraco)
+        database.session.commit()
+
+    return render_template('cadastro-buraco.html')
