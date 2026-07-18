@@ -5,7 +5,7 @@
 {% block conteudo %} 
     <h1>Preencha o formulário com as informações do problema</h1>
     
-    <h1>Cadastro de Buracos</h1>
+    <h1>Cadastro de Buracos</h1>a
 
     <form action="{{url_for('cadastrar_buraco')}}" method="post">
         <label for="rua">Rua</label>
@@ -24,4 +24,6 @@
 
         <button type="submit">Finalizar Cadastror</button>
     </form>
+
+    <a href="{{ url_for('home') }}">Voltar para Home</a>
 {% endblock %}

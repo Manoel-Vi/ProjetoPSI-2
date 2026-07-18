@@ -107,12 +107,12 @@ def cadastrar_buraco():
 
         return redirect(url_for("listar_buracos"))
 
-    return render_template('cadastro-buraco.html')
+    return render_template('cadastro_buraco.html')
 
 @app.route("/listar-buracos")
 def listar_buracos():
     buracos = Buraco.query.all()
-    return render_template("listar-buracos.html", buracos=buracos)
+    return render_template("listar_buracos.html", buracos=buracos)
 
 @app.route("/apagar-buraco/<int:id>")
 def apagar_buraco(id):
@@ -132,4 +132,4 @@ def editar_buraco(id):
         database.session.commit()
 
         return redirect(url_for("listar_buracos"))
-    return render_template("editar-buraco.html", buraco=buraco)
+    return render_template("editar_buraco.html", buraco=buraco)

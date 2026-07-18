@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Listar Buracos
+{% endblock %}
+
+{% block conteudo %}
+
+<h1>Buracos Cadastrados</h1>
+
+<table border="1">
+
+    <tr>
+        <th>Rua</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Gravidade</th>
+        <th>Autor</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for buraco in buracos %}
+    <tr>
+
+        <td>{{ buraco.rua }}</td>
+        <td>{{ buraco.bairro }}</td>
+        <td>{{ buraco.cidade }}</td>
+        <td>{{ buraco.gravidade }}</td>
+        <td>{{ buraco.autor.nome }}</td>
+
+        <td>
+            <a href="{{ url_for('editar_buraco', id=buraco.id) }}">Editar</a>
+
+            <a href="{{ url_for('apagar_buraco', id=buraco.id) }}">Apagar</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+<a href="{{ url_for('home') }}">Voltar para Home</a>
+
+{% endblock %}
