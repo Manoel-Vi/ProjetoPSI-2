@@ -84,4 +84,4 @@ def cadastrar_buraco():
         database.session.add(novo_buraco)
         database.session.commit()
 
-    return render_template('cadastrar-burraco.html')
+    return render_template('cadastro-buraco.html')
