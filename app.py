@@ -1,10 +1,15 @@
 from flask import Flask, render_template, render_template_string, request, redirect, url_for, abort, flash
 from .models import Usuario, Buraco
-from flask_login import current_user, logout_user
+from flask_login import current_user, logout_user, login_user, LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 from .db import database
 
+
 app = Flask(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,6 +22,10 @@ database.init_app(app)
 with app.app_context():
     database.create_all()
 
+@login_manager.user_loader
+def load_user(user_id):
+    return database.session.get(Usuario, int(user_id))
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -27,6 +36,8 @@ def cadastro():
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
+
+        senha_hash = generate_password_hash(senha)
         
         if len(senha) < 6:
             flash('A senha deve ter pelo menos 6 caracteres.')
@@ -36,7 +47,7 @@ def cadastro():
         if usuario_ja_existe:
             abort(400)
 
-        novo_usuario = Usuario(nome=nome, email=email, senha=senha)
+        novo_usuario = Usuario(nome=nome, email=email, senha=senha_hash)
         database.session.add(novo_usuario)
         database.session.commit()
 
@@ -52,8 +63,9 @@ def login():
 
         usuario = Usuario.query.filter_by(email=email).first()
 
-        if usuario and usuario.senha == senha:
-            return redirect(url_for('home'))
+        if usuario and check_password_hash(usuario.senha, senha):
+            login_user(usuario)
+            return redirect(url_for("home"))
         
         else:
             flash('E-mail ou senha incorretos. Tente novamente!')
