@@ -196,7 +196,7 @@ table{
     width: 400px;
     height: 50px;
 }
-#listar-buracos{
+#listarBuracos{
     display: flex;
     flex-direction: column;
     align-items: center;
