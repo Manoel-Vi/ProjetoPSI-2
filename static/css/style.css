@@ -332,3 +332,7 @@ button:hover{
 h1{
     color: white;
 }
+.flash{
+    color: white;
+    margin: 10px
+}
