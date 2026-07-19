@@ -3,11 +3,15 @@
 {% block titulo %} Inicio {% endblock %}
 
 {% block conteudo %} 
-    <div id="loginBox">
+    <div id="Icone">⚠️</div>
+
+    <div id="iniciarSessao">
         <h1>Inicie a sessão para acessar a página</h1>
         <br>
         <a href="{{url_for('login')}}">Iniciar sessão</a>
         <br>
         <a href="{{url_for('cadastro')}}">Cadastre-se</a>
+        <p>Nosso site oferece uma experiência única e personalizada para cada usuário.</p>
     </div>
+    
 {% endblock %}

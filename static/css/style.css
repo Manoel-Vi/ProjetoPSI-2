@@ -8,54 +8,153 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    background: linear-gradient(to bottom, orange, orangered);
-    position: relative;
-    margin: 0;
+    background-image: url("/static/imagensUtilizadas/buracoIndex.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
-h1{
-    text-align: center;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    
-}
-#loginBox{
-    width: 100%;
+#iniciarSessao{
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    width: 50%;
+    background: linear-gradient(to right, rgb(22, 2, 29),
+     rgb(14, 0, 19));
+    margin-left: 70%;
+    border-radius: 10px 0px 0px 10px;
+}
+#iniciarSessao h1{
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    margin-bottom: 10%;
+    padding: 10px;
+}
+#iniciarSessao p{
+    color: white;
+    text-align: center;
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 55%;
+}
+#iniciarSessao a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 1%;
+    background:#ff6b35;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: 25%;
+    padding: 12px;
+    font-weight: bold;
+}
+#Icone{
+    height: 30px;
+    width: 30px;
+    font-size: 70px;
+    padding-left:15px;
+}
+#iniciarSessao a:hover{
+    background-color: #ff8c42;
+    box-shadow: 0 12px 20px rgba(255,107,53,.3);
+}
+#iniciarSessao h1, #iniciarSessao a, #iniciarSessao p{
+    animation-name: abrirjanela;
+    animation-duration: 1s;
+}
+@keyframes abrirjanela {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#papeldeparede{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#bolaLegal{
+    width:45%;
+    height:100vh;
+    background: url("/static/imagensUtilizadas/japazinha.JPG");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 50% 50% 0;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-right: 30%;
+}
+#centralizar{
+    background-color:rgb(14, 0, 19);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:row;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
-#loginBox h1{
-    font-size: 45px;
-    margin-bottom: 20px;
+#h1form{
+    font-size: 35px;
+    width: auto;
+    color: #ff8c42;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    margin-left: -110%;
 }
-#loginBox a{
+#formLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: -110%;
+}
+#formLogin input{
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 4px;
     color: white;
-    font-size: 25px;
-    margin-top: 10px;
-    background: linear-gradient(to bottom, black, rgb(26, 26, 26));
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
+    height: 40px;
+    width: 300px;
+    gap: 5px;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+#formLogin label{
+    color: white;
+    font-size: 13px;
+    
 }
-
-@keyframes slideUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+#linkform{
+    color: white;
+    margin-top: -55%;
+    margin-left: -31%;
 }
-
-h1{
-    animation: slideUp 1s ease-out forwards;
+#formLogin button:hover{
+    box-shadow: 0px 0px 20px rgba(255,107,53,.3); 
 }
-
-#loginBox a{
-    opacity: 0;
-    animation: fadeIn 0.6s ease-in forwards;
-    animation-delay: 1.5s;
+#formLogin button{
+    background-color: #ff8c42;
+    border-style: none;
+    border-radius: 10px;
+    height: 50px;
+    margin-bottom: -25%;
+    margin-top: 15%;
+    font-size: 20px;
+}
+#moverForm{
+    width: 400px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-top: -25%;
 }
