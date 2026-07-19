@@ -8,7 +8,7 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    background-image: url("/static/imagensUtilizadas/buracoIndex.jpg");
+    background: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -90,6 +90,8 @@ body{
     margin-left: auto;
     margin-bottom: auto;
     margin-right: 30%;
+    animation-name: asiatica;
+    animation-duration: 3s;
 }
 #centralizar{
     background-color:rgb(14, 0, 19);
@@ -140,6 +142,10 @@ body{
 }
 #formLogin button:hover{
     box-shadow: 0px 0px 20px rgba(255,107,53,.3); 
+    transition: 0.2s;
+}
+#formLogin button:not(:hover){
+    transition: 1s;
 }
 #formLogin button{
     background-color: #ff8c42;
@@ -157,4 +163,172 @@ body{
     justify-content:center;
     align-items:center;
     margin-top: -25%;
+    animation-name: animacaodotexto;
+    animation-duration: 3s;
+}
+@keyframes asiatica {
+    from{
+        transform: translateX(-400px);
+        opacity: 0;
+    }
+    to{
+        transition: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes animacaodotexto {
+    from{
+        transform: translatey(400px);
+        opacity: 0;
+    }
+    to{
+        transition: translatey(0px);
+        opacity: 1;
+    }
+}
+#h1listar{
+    color: white;
+    text-align: center;
+}
+table{
+    background-color: #ff6b35;
+    color: black;
+    width: 400px;
+    height: 50px;
+}
+#listar-buracos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    background-color: #ff6b35;
+    height: 140px;
+    border-radius: 15px;
+    gap: 3px;
+    padding: 10px;
+    
+}
+#voltar{
+    margin-top: 2%;
+    text-decoration: none;
+    color: white;
+}
+#centralizar-home{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(22, 2, 29) ;
+    height:200px;
+    width: auto;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 15%;
+}
+#nomeUser{
+    color: white;
+    font-size: 70px;
+
+}
+.cadastrarUser{
+    text-decoration: none;
+    font-size: 20px;
+    color: #ff8c42;
+}
+.verBuracos{
+    text-decoration: none;
+    font-size: 20px;
+    color: #ff8c42;
+}
+
+.container{
+    width: 420px;
+    background-color: rgb(22, 2, 29);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+    padding:40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.35);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container h2{
+    color: #ff8c42;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.container p{
+    color: #cfcfcf;
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label{
+    color: white;
+    font-weight: bold;
+}
+
+input, select{
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #555;
+    background: transparent;
+    color: white;
+    outline: none;
+    transition: 3s;
+}
+
+
+input:focus, select:focus{
+    border-color: #ff8c42;
+    box-shadow: 0 0 12px rgba(255,140,66,.3);
+}
+
+option{
+    color: black;
+}
+
+button{
+    margin-top: 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #ff8c42;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+
+    transition: 3s;
+}
+
+button:hover{
+    transform: translateY(-2px);
+    background: #ff9f63;
+    box-shadow: 0 10px 20px rgba(255,140,66,.35);
+}
+
+#voltar{
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 3s;
+}
+
+
+h1{
+    color: white;
 }
