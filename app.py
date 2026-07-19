@@ -40,7 +40,7 @@ def cadastro():
         senha_hash = generate_password_hash(senha)
         
         if len(senha) < 6:
-            flash('A senha deve ter pelo menos 6 caracteres.')
+            flash('A senha deve ter pelo menos 6 caracteres.', 'danger')
             return redirect(url_for('cadastro'))
 
         usuario_ja_existe = Usuario.query.filter_by(email=email).first()
