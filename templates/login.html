@@ -2,23 +2,33 @@
 
 {% block titulo %} Login {% endblock %}
 
-{% block conteudo %} 
-    <h1>Preencha o formulário abaixo para realizar seu login</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for message in messages %}
-                <div>
-                {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form action="{{url_for('login')}}" method="post">
-        <label for="email">E-mail:</label>
-        <input type="text" name="email" id="email" placeholder="insira seu email">
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" placeholder="crie uma senha">
-        <button type="submit">Entrar</button>
-    </form>
-    <a href="{{url_for('cadastro')}}">Ir para a página de cadastro</a>
+{% block conteudo %}
+
+<div id="papeldeparede">
+    
+    <div id="centralizar">
+        <div id="bolaLegal"></div>
+            <div id="moverForm">
+                <h1 id="h1form">Preencha o formulário abaixo <br> para realizar seu login</h1>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div>
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form id="formLogin" action="{{url_for('login')}}" method="post">
+                    <label for="email">E-mail:</label>
+                    <input type="text" name="email" id="email" placeholder="insira seu email">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha" placeholder="crie uma senha">
+                    <button type="submit">Entrar</button>
+                </form>
+            
+            <a id="linkform" href="{{url_for('cadastro')}}">Ir para a página de cadastro</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

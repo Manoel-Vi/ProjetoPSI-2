@@ -2,25 +2,41 @@
 
 {% block titulo %} Cadastro {% endblock %}
 
-{% block conteudo %} 
+{% block conteudo %}
+
+<div class="container">
+
     <h1>Preencha o formulário abaixo para realizar seu cadastro</h1>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for message in messages %}
-                <div>
-                {{ message }}
+                <div class="flash">
+                    {{ message }}
                 </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
+
     <form action="{{url_for('cadastro')}}" method="post">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" placeholder="insira seu nome">
-        <label for="email">E-mail:</label>
-        <input type="text" name="email" id="email" placeholder="insira seu email">
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" placeholder="crie uma senha">
+
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Insira seu nome">
+
+        <label for="email">E-mail</label>
+        <input type="text" name="email" id="email" placeholder="Insira seu e-mail">
+
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" placeholder="Crie uma senha">
+
         <button type="submit">Cadastrar</button>
+
     </form>
-    <a href="{{url_for('login')}}">Ir para a página de Login</a>
+
+    <a id="voltar" href="{{url_for('login')}}">
+        Já possui uma conta? Faça login
+    </a>
+
+</div>
+
 {% endblock %}

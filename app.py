@@ -1,4 +1,4 @@
-from flask import Flask, render_template, render_template_string, request, redirect, url_for, abort, flash
+from flask import Flask, render_template, request, redirect, url_for, abort, flash
 from .models import Usuario, Buraco
 from flask_login import current_user, logout_user, login_user, LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy

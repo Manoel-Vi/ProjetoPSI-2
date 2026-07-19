@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
-{% block titulo %} Home {% endblock %}
+{% block conteudo %}
+<div id="centralizar-home"></div>
+<h1 id="nomeUser">Bem-vindo {{ current_user.nome }}</h1>
 
 {% block conteudo %} 
     <h1>Bem-vindo {{ current_user.nome }}</h1>
 
     <br>
 
-    <a href="{{ url_for('cadastrar_buraco') }}">Cadastrar Buraco</a>
+    <a class="cadastrarUser" href="{{ url_for('cadastrar_buraco') }}">Cadastrar Buraco</a>
 
     <br><br>
 
-    <a href="{{ url_for('listar_buracos') }}">Ver Buracos Cadastrados</a>
+    <a class="verBuracos" href="{{ url_for('listar_buracos') }}">Ver Buracos Cadastrados</a>
 
     <br><br>
     
     <a href="{{ url_for('logout') }}">Sair</a>
+</div>
 {% endblock %}
