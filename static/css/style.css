@@ -110,7 +110,7 @@ body{
     width: auto;
     color: #ff8c42;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 40%;
     margin-bottom: 10%;
     margin-left: -110%;
 }
@@ -133,12 +133,6 @@ body{
 #formLogin label{
     color: white;
     font-size: 13px;
-    
-}
-#linkform{
-    color: white;
-    margin-top: -55%;
-    margin-left: -31%;
 }
 #formLogin button:hover{
     box-shadow: 0px 0px 20px rgba(255,107,53,.3); 
@@ -191,10 +185,42 @@ body{
     text-align: center;
 }
 table{
+    margin-top: 2%;
+    background-color: rgb(22, 2, 29);
+    color: white;
+    width: 90%;
+}
+th{
+    padding: 5px;
+}
+td{
+    padding-left: 5px;
+}
+.acoes{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.acoes a{
+    text-decoration: none;
+    color: white;
+    background-color: #ff8c42;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80px;
+    text-align: center;
+    margin: 2%;
+    font-weight: bold;
+}
+.acoes a:hover{
     background-color: #ff6b35;
+    box-shadow: 0 12px 20px rgba(255,107,53,.3);
+    transition: 0.2s;
+}
+.cabecalho{
+    background-color: white;
     color: black;
-    width: 400px;
-    height: 50px;
 }
 #listarBuracos{
     display: flex;
@@ -202,28 +228,43 @@ table{
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-top: 15%;
     background-color: #ff6b35;
-    height: 140px;
     border-radius: 15px;
     gap: 3px;
     padding: 10px;
+    width: 80%;
     
 }
 #voltar{
-    margin-top: 2%;
     text-decoration: none;
     color: white;
+    background-color: rgb(22, 2, 29);
+    padding: 5px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    margin: 2%;
+    font-weight: bold;
+    margin-top: 2%;
+}
+#voltar:hover{
+    background-color: rgb(60, 6, 80);
+    box-shadow: 0 12px 20px rgba(158, 10, 212, 0.3);
+    transition: 0.2s;
 }
 #centralizar-home{
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(22, 2, 29) ;
-    height:200px;
+    height:250px;
     width: auto;
     text-align: center;
     border-radius: 15px;
     margin-top: 15%;
+    padding: 20px;
 }
 #nomeUser{
     color: white;
@@ -247,7 +288,7 @@ table{
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 20px;
-    padding:40px;
+    padding:20px;
     box-shadow: 0 15px 35px rgba(0,0,0,.35);
     margin-left: auto;
     margin-right: auto;
@@ -335,4 +376,35 @@ h1{
 .flash{
     color: white;
     margin: 10px
+}
+#voltarCadastro:hover{
+    text-decoration: underline;
+    transition: 0.2s;
+}
+#voltarCadastro{
+    border-style: none;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 15%;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 12px;
+    font-weight: bold;
+}
+.flash_login{
+    color: white;
+    margin: 5px;
+    margin-left: -110%;
+}
+#sair{
+    color: white;
+    margin: 5px;
+    text-decoration: none;
+}
+.editarH1{
+    color: white;
+    text-align: center;
+    margin: 5%;
 }

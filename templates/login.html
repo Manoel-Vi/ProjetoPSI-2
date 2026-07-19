@@ -13,7 +13,7 @@
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}
-                            <div>
+                            <div class="flash_login">
                             {{ message }}
                             </div>
                         {% endfor %}
@@ -25,9 +25,10 @@
                     <label for="senha">Senha:</label>
                     <input type="password" name="senha" id="senha" placeholder="crie uma senha">
                     <button type="submit">Entrar</button>
+                    <br>
+                    <a id="voltarCadastro" href="{{url_for('cadastro')}}">Ir para a página de cadastro</a>
                 </form>
             
-            <a id="linkform" href="{{url_for('cadastro')}}">Ir para a página de cadastro</a>
         </div>
     </div>
 </div>

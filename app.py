@@ -98,18 +98,23 @@ def cadastrar_buraco():
         cidade = request.form["cidade"]
         gravidade = request.form["gravidade"]
 
-        novo_buraco = Buraco(
-            rua=rua,
-            bairro=bairro,
-            cidade=cidade,
-            gravidade=gravidade,
-            usuario_id=current_user.id
-        )
+        if gravidade != "" and bairro != "" and cidade != "" and rua != "":
+            novo_buraco = Buraco(
+                rua=rua,
+                bairro=bairro,
+                cidade=cidade,
+                gravidade=gravidade,
+                usuario_id=current_user.id
+            )
 
-        database.session.add(novo_buraco)
-        database.session.commit()
+            database.session.add(novo_buraco)
+            database.session.commit()
 
-        return redirect(url_for("listar_buracos"))
+            return redirect(url_for("listar_buracos"))
+        
+        if gravidade == "" or bairro == "" or cidade == "" or rua == "":
+            flash('Todos os campos devem ser preenchidos.')
+            return redirect(url_for('cadastrar_buraco'))
 
     return render_template('cadastro_buraco.html')
 

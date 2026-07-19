@@ -3,51 +3,35 @@
 {% block titulo %} Editar Buraco número: {{ buraco.id }} {% endblock %}
 
 {% block conteudo %}
+<div class="container">
+    <h1 class="editarH1">Editar Buraco</h1>
 
-<h1>Editar Buraco</h1>
+    <form method="POST">
 
-<form method="POST">
+        <label>Rua</label>
+        <input type="text"name="rua"value="{{ buraco.rua }}">
 
-    <label>Rua</label>
-    <input type="text"name="rua"value="{{ buraco.rua }}">
+        <label>Bairro</label>
+        <input type="text" name="bairro" value="{{ buraco.bairro }}">
 
-    <label>Bairro</label>
-    <input type="text" name="bairro" value="{{ buraco.bairro }}">
+        <label>Cidade</label>
+        <input type="text"name="cidade"value="{{ buraco.cidade }}">
 
-    <label>Cidade</label>
-    <input type="text"name="cidade"value="{{ buraco.cidade }}">
+        <label>Gravidade</label>
 
-    <label>Gravidade</label>
+        <select name="gravidade">
 
-    <select name="gravidade">
+            <option value="Leve" {% if buraco.gravidade == "Leve" %}selected{% endif %}> Leve </option>
 
-        <option
-            value="Leve"
-            {% if buraco.gravidade == "Leve" %}selected{% endif %}
-        >
-            Leve
-        </option>
+            <option value="Médio" {% if buraco.gravidade == "Médio" %}selected{% endif %}> Médio </option>
 
-        <option
-            value="Médio"
-            {% if buraco.gravidade == "Médio" %}selected{% endif %}
-        >
-            Médio
-        </option>
+            <option value="Urgente" {% if buraco.gravidade == "Urgente" %}selected{% endif %}> Urgente </option>
 
-        <option
-            value="Urgente"
-            {% if buraco.gravidade == "Urgente" %}selected{% endif %}
-        >
-            Urgente
-        </option>
+        </select>
 
-    </select>
+        <button type="submit"> Salvar Alterações </button>
 
-    <button type="submit">
-        Salvar Alterações
-    </button>
-
-</form>
+    </form>
+</div>
 
 {% endblock %}

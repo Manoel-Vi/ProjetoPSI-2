@@ -8,7 +8,7 @@
 
     <table border="1">
 
-        <tr>
+        <tr class="cabecalho">
             <th>Rua</th>
             <th>Bairro</th>
             <th>Cidade</th>
@@ -26,7 +26,7 @@
             <td>{{ buraco.gravidade }}</td>
             <td>{{ buraco.autor.nome }}</td>
 
-            <td>
+            <td class="acoes">
                 <a href="{{ url_for('editar_buraco', id=buraco.id) }}">Editar</a>
 
                 <a href="{{ url_for('apagar_buraco', id=buraco.id) }}">Apagar</a>

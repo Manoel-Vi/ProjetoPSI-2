@@ -4,7 +4,7 @@
 
 {% block conteudo %}
 <div id="centralizar-home">
-    <h1 id="nomeUser">Bem-vindo {{ current_user.nome }}</h1>
+    <h1 id="nomeUser">Bem-vindo "{{ current_user.nome }}"</h1>
 
         <br>
 
@@ -16,6 +16,6 @@
 
         <br><br>
         
-        <a href="{{ url_for('logout') }}">Sair</a>
+        <a id="sair" href="{{ url_for('logout') }}">Sair</a>
 </div>
 {% endblock %}

@@ -9,20 +9,30 @@
 
     <p>Preencha o formulário com as informações do problema.</p>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <form action="{{url_for('cadastrar_buraco')}}" method="post">
 
         <label for="rua">Rua</label>
-        <input type="text" name="rua" id="rua" placeholder="Nome da rua" required>
+        <input type="text" name="rua" id="rua" placeholder="Nome da rua" >
 
         <label for="bairro">Bairro</label>
-        <input type="text" name="bairro" id="bairro" placeholder="Nome do bairro" required>
+        <input type="text" name="bairro" id="bairro" placeholder="Nome do bairro" >
 
         <label for="cidade">Cidade</label>
-        <input type="text" name="cidade" id="cidade" placeholder="Nome da cidade" required>
+        <input type="text" name="cidade" id="cidade" placeholder="Nome da cidade" >
 
         <label for="gravidade">Gravidade</label>
 
-        <select name="gravidade" id="gravidade" required>
+        <select name="gravidade" id="gravidade" >
             <option value="">Selecione...</option>
             <option value="Leve">Leve</option>
             <option value="Médio">Médio</option>
